@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Edificio completo en La Boyera, El Hatillo</title>
+<meta name="description" content="Edificio completo en venta en La Boyera, El Hatillo, Caracas. 70% de avance de obra, estructura 100% terminada, 58 apartamentos y 3 sótanos. Para inversionistas y constructores.">
+<meta name="theme-color" content="#0a0f18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="frames/f_0001.webp">
+<style>
+:root{
+  --ink:#0a0f18;
+  --navy:#0f1f3d;
+  --navy-2:#162a50;
+  --cement:#8c9096;
+  --cement-lt:#d8d9d6;
+  --white:#ffffff;
+  --sky:#5b93d1;
+  --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans:"Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw:calc(100svh * 478 / 850);   /* ancho del marco de video */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--ink)}
+body{background:var(--ink);color:var(--white);font-family:var(--sans);font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+/* ---------- Cabecera ---------- */
+.site-head{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:max(16px,env(safe-area-inset-top)) clamp(16px,3vw,40px) 16px;background:linear-gradient(to bottom,rgba(10,15,24,.72),rgba(10,15,24,0));pointer-events:none}
+.site-head > *{pointer-events:auto}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.25rem;letter-spacing:.01em}
+.brand span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cement-lt)}
+.head-cta{font-size:.85rem;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.55);padding:.55rem 1rem;border-radius:2px;background:rgba(10,15,24,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .25s,color .25s}
+.head-cta:hover{background:var(--white);color:var(--navy)}
+
+/* ---------- Recorrido ---------- */
+#journey{position:relative;height:1300vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1400px;background:var(--ink)}
+.ambient{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;filter:blur(26px) saturate(1.2);transform:scale(1.2)}
+.stage[data-mode="cover"] .ambient{display:none}
+.ambient-shade{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 50% 50%,rgba(10,15,24,.15),rgba(10,15,24,.85)),
+  linear-gradient(to bottom,rgba(15,31,61,.55),rgba(10,15,24,.75))}
+
+.frame-wrap{position:absolute;top:0;bottom:0;left:50%;width:var(--fw);margin-left:calc(var(--fw) / -2)}
+.frame{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;box-shadow:0 30px 120px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.08)}
+.frame canvas{display:block;width:100%;height:100%;object-fit:cover;background:#10151e}
+.fx{position:absolute;inset:0;pointer-events:none;opacity:var(--v,0);background:radial-gradient(90% 70% at 50% 50%,rgba(10,15,24,0) 40%,rgba(10,15,24,.85) 100%)}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(10,15,24,.9) 0%,rgba(10,15,24,.55) 32%,rgba(10,15,24,0) 62%)}
+.stage[data-mode="side"] .shade{background:linear-gradient(to top,rgba(10,15,24,.45),rgba(10,15,24,0) 40%)}
+
+.stage[data-mode="cover"] .frame-wrap{left:0;width:100%;margin-left:0}
+.stage[data-mode="cover"] .frame{box-shadow:none}
+
+/* Paneles de información */
+.panels{position:absolute;inset:0;pointer-events:none}
+.panel{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;justify-content:flex-end;container-type:inline-size;padding-bottom:max(104px,calc(env(safe-area-inset-bottom) + 96px))}
+.panel-in{opacity:var(--p,0);transform:translate3d(0,calc((1 - var(--p,0)) * 36px),0);will-change:opacity,transform}
+.panel.on{pointer-events:auto}
+.stage[data-mode="cover"] .panel{left:0;right:0;padding-left:clamp(20px,6vw,44px);padding-right:clamp(20px,6vw,44px)}
+.stage[data-mode="contain"] .panel{left:50%;width:min(var(--fw),92vw);margin-left:calc(min(var(--fw),92vw) / -2);padding-left:22px;padding-right:22px}
+.stage[data-mode="side"] .panel{justify-content:center;padding-bottom:0;width:calc(50vw - var(--fw) / 2 - 112px)}
+.stage[data-mode="side"] .t{font-size:clamp(2rem,11.5cqw,3.8rem)}
+.stage[data-mode="side"] .h1{font-size:clamp(1.6rem,10cqw,3.8rem)}
+.stage[data-mode="side"] .panel.left{left:56px}
+.stage[data-mode="side"] .panel.right{right:56px}
+
+.zone{display:inline-flex;align-items:center;gap:.7rem;font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--cement-lt);margin-bottom:1rem}
+.zone::before{content:"";width:28px;height:1px;background:var(--white)}
+.t{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.005em;font-size:clamp(1.9rem,10.2cqw,3.6rem);text-wrap:balance}
+.t em{font-style:italic;font-weight:500}
+.p{margin-top:1.1rem;max-width:40ch;font-size:clamp(.98rem,3.9cqw,1.12rem);color:rgba(255,255,255,.86)}
+.p strong{font-weight:500;color:var(--white)}
+.lead{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.15rem,5.6cqw,1.6rem);line-height:1.25;margin-top:1.1rem;color:var(--cement-lt)}
+
+.h1{font-family:var(--serif);font-weight:700;line-height:1;letter-spacing:.015em;font-size:clamp(1.55rem,8.6cqw,3.5rem);text-transform:uppercase;text-wrap:balance}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:500;font-size:.95rem;text-decoration:none;padding:.9rem 1.5rem;border-radius:2px;border:1px solid var(--white);background:var(--white);color:var(--navy);cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:transparent;color:var(--white)}
+.btn.ghost{background:rgba(10,15,24,.35);color:var(--white);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.btn.ghost:hover{background:var(--white);color:var(--navy)}
+.hint{margin-top:1.4rem;font-size:.8rem;color:var(--cement-lt);display:flex;align-items:center;gap:.7rem}
+.hint i{display:block;width:1px;height:28px;background:linear-gradient(to bottom,var(--white),transparent)}
+.load{font-size:.75rem;color:var(--cement);margin-top:.6rem;min-height:1.1em;transition:opacity .6s}
+
+.meter{margin-top:1.4rem;max-width:300px}
+.meter .track{height:3px;background:rgba(255,255,255,.22);overflow:hidden}
+.meter .track i{display:block;height:100%;background:var(--white);transform-origin:left;transform:scaleX(calc(var(--p,0) * .7))}
+.meter .lbl{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;color:var(--cement-lt)}
+
+/* Riel de capítulos */
+.rail{position:absolute;right:clamp(10px,1.6vw,24px);top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:6px}
+.rail button{position:relative;width:22px;height:22px;background:none;border:0;cursor:pointer;display:grid;place-items:center}
+.rail button::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:all .3s}
+.rail button.act::before{width:10px;height:10px;background:var(--white);box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+.rail button span{position:absolute;right:30px;white-space:nowrap;font-size:.78rem;background:rgba(10,15,24,.85);padding:.25rem .6rem;border-radius:2px;opacity:0;transform:translateX(6px);transition:all .25s;pointer-events:none}
+.rail button:hover span,.rail button:focus-visible span{opacity:1;transform:none}
+@media (hover:none){.rail button span{display:none}}
+
+/* ---------- Secciones estáticas ---------- */
+section.sheet,section.contact{position:relative;z-index:2;padding:clamp(72px,11vw,150px) clamp(20px,6vw,88px)}
+.sheet{background:linear-gradient(to bottom,var(--ink),#11151b 30%,#14171c)}
+.sheet-grid{max-width:1180px;margin:0 auto;display:grid;gap:clamp(36px,6vw,96px);grid-template-columns:1fr}
+@media (min-width:900px){.sheet-grid{grid-template-columns:minmax(260px,380px) 1fr;align-items:start}}
+.flyer{position:relative}
+.flyer img{display:block;width:100%;height:auto;border-radius:2px;box-shadow:0 24px 80px rgba(0,0,0,.55)}
+@media (min-width:900px){.flyer{position:sticky;top:96px}}
+.sheet h2,.contact h2{font-family:var(--serif);font-weight:600;line-height:1.02;font-size:clamp(2.2rem,5.4vw,4rem);text-wrap:balance}
+.sheet .sub{margin-top:1rem;max-width:52ch;color:rgba(255,255,255,.8);font-size:1.05rem}
+dl.rows{margin-top:2.4rem;border-top:1px solid rgba(255,255,255,.22)}
+dl.rows div{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+dl.rows dt{font-size:.9rem;color:var(--cement)}
+dl.rows dd{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.2}
+.audience{margin-top:3rem;display:grid;gap:2rem;grid-template-columns:1fr}
+@media (min-width:640px){.audience{grid-template-columns:1fr 1fr}}
+.audience h3{font-family:var(--serif);font-weight:600;font-size:1.6rem;margin-bottom:.5rem}
+.audience p{color:rgba(255,255,255,.8);max-width:36ch}
+
+.contact{background:var(--navy);overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 85% 0%,rgba(91,147,209,.22),rgba(15,31,61,0) 70%);pointer-events:none}
+.contact-grid{position:relative;max-width:1180px;margin:0 auto;display:grid;gap:clamp(36px,6vw,96px);grid-template-columns:1fr}
+@media (min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
+.agent{margin-top:2.2rem;font-size:1.05rem}
+.agent b{display:block;font-family:var(--serif);font-weight:600;font-size:1.7rem}
+.agent a{display:inline-block;margin-top:.4rem;margin-right:1.4rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.agent a:hover{border-color:var(--white)}
+form{display:grid;gap:1.4rem}
+label{display:grid;gap:.4rem;font-size:.85rem;color:var(--cement-lt)}
+input,select,textarea{width:100%;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.4);border-radius:2px 2px 0 0;padding:.85rem .9rem;color:var(--white);font-size:1rem}
+select option{color:#111}
+textarea{resize:vertical;min-height:92px}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.35)}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--white);background:rgba(255,255,255,.09)}
+.fine{font-size:.8rem;color:var(--cement)}
+footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6vw,88px) 110px;font-size:.8rem;color:var(--cement)}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.wa .lbl{background:var(--white);color:var(--navy);font-weight:500;font-size:.85rem;padding:.5rem .9rem;border-radius:2px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateX(8px);transition:all .3s;pointer-events:none}
+.wa:hover .lbl,.wa:focus-visible .lbl{opacity:1;transform:none}
+.wa .ico{position:relative;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.wa .ico svg{width:32px;height:32px;fill:#fff}
+.wa .ico::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.8s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(1.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.wa .ico::after{animation:none;opacity:0}}
+@media (max-width:640px){.head-cta{padding:.5rem .8rem;font-size:.8rem}.brand b{font-size:1.1rem}.rail{display:none}}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Neyhda Boulton Bienes Raíces"><b>Neyhda Boulton</b><span>Bienes Raíces</span></a>
+  <a class="head-cta" href="#contacto">Agendar visita</a>
+</header>
+
+<main id="top">
+<div id="journey" aria-label="Recorrido visual del edificio">
+  <div class="stage" id="stage" data-mode="cover">
+    <canvas class="ambient" id="ambient" width="48" height="86" aria-hidden="true"></canvas>
+    <div class="ambient-shade" aria-hidden="true"></div>
+
+    <div class="frame-wrap">
+      <div class="frame" id="frame">
+        <canvas id="cv" width="478" height="850" role="img" aria-label="Recorrido en video del edificio en La Boyera, controlado con el scroll"></canvas>
+        <div class="fx" id="fx"></div>
+        <div class="shade"></div>
+      </div>
+    </div>
+
+    <nav class="rail" id="rail" aria-label="Capítulos del recorrido"></nav>
+
+    <div class="panels" id="panels">
+
+      <!-- 0 · Hero -->
+      <div class="panel left" data-t0="0" data-t1="0.5" data-d="0.55" data-name="Inicio">
+        <div class="panel-in">
+          <h1 class="h1">Atención inversionistas y constructores</h1>
+          <p class="lead">Edificio completo en venta. La Boyera, El Hatillo, Caracas.</p>
+          <div class="btns"><a class="btn" href="#" data-go="1">Descubre el proyecto</a></div>
+          <p class="hint"><i></i>Desliza para recorrerlo</p>
+          <p class="load" id="load" aria-live="polite">Cargando recorrido…</p>
+        </div>
+      </div>
+
+      <!-- 1 · Fachada -->
+      <div class="panel right" data-t0="4.2" data-t1="4.8" data-d="0.7" data-name="Fachada">
+        <div class="panel-in">
+          <div class="zone">Fachada</div>
+          <h2 class="t">Un edificio entero, bajo un solo propietario.</h2>
+          <p class="p">Se ofrece la totalidad del desarrollo: <strong>58 apartamentos y 3 sótanos</strong>, en una sola operación de compra.</p>
+        </div>
+      </div>
+
+      <!-- 2 · Avance -->
+      <div class="panel left" data-t0="6.8" data-t1="7.4" data-d="0.7" data-name="Avance de obra">
+        <div class="panel-in">
+          <div class="zone">Estado de la obra</div>
+          <h2 class="t">70% de avance de obra.</h2>
+          <p class="p">La estructura está <strong>100% terminada</strong>. Queda el tramo final para entregar el edificio.</p>
+          <div class="meter" aria-hidden="true"><div class="track"><i></i></div><div class="lbl"><span>Obra ejecutada</span><span>70%</span></div></div>
+        </div>
+      </div>
+
+      <!-- 3 · Obra gris -->
+      <div class="panel right" data-t0="9.4" data-t1="10.0" data-d="0.7" data-name="Obra gris">
+        <div class="panel-in">
+          <div class="zone">Interiores</div>
+          <h2 class="t">Obra gris: tú defines el acabado.</h2>
+          <p class="p">Losas, columnas y espacios abiertos, listos para recibir tu proyecto de interiores.</p>
+        </div>
+      </div>
+
+      <!-- 4 · Vistas -->
+      <div class="panel left" data-t0="13.0" data-t1="13.6" data-d="0.7" data-name="Vistas">
+        <div class="panel-in">
+          <div class="zone">Terrazas</div>
+          <h2 class="t">Vistas a Caracas y El Ávila.</h2>
+          <p class="p">Balcones y terrazas abiertos hacia la ciudad y la montaña.</p>
+        </div>
+      </div>
+
+      <!-- 5 · Estructura -->
+      <div class="panel right" data-t0="15.8" data-t1="16.4" data-d="0.7" data-name="Estructura">
+        <div class="panel-in">
+          <div class="zone">Estructura</div>
+          <h2 class="t">3 sótanos de estacionamiento y maleteros.</h2>
+          <p class="p">Estacionamiento y almacenaje resueltos dentro de la estructura, en tres niveles bajo el edificio.</p>
+        </div>
+      </div>
+
+      <!-- 6 · Entorno -->
+      <div class="panel left" data-t0="17.9" data-t1="18.5" data-d="0.7" data-name="Entorno">
+        <div class="panel-in">
+          <div class="zone">Entorno</div>
+          <h2 class="t">Exclusivo clima de montaña.</h2>
+          <p class="lead">Ubicación privilegiada, plusvalía garantizada.</p>
+        </div>
+      </div>
+
+      <!-- 7 · Potencial -->
+      <div class="panel right" data-t0="21.5" data-t1="26.0" data-d="1.5" data-name="Potencial">
+        <div class="panel-in">
+          <div class="zone">Potencial y oportunidad</div>
+          <h2 class="t">De obra gris a apartamento terminado.</h2>
+          <p class="p">Así puede verse una unidad al culminar los acabados (recreación referencial). Tú eliges la especificación, la marca y la estrategia de venta.</p>
+        </div>
+      </div>
+
+      <!-- 8 · Cierre -->
+      <div class="panel left" data-t0="27.4" data-t1="28.5" data-d="0.9" data-name="Visita privada">
+        <div class="panel-in">
+          <div class="zone">Visita privada</div>
+          <h2 class="t">Invierte en tu futuro.</h2>
+          <p class="p">El edificio completo, listo para su siguiente propietario. Conócelo por dentro con la agente del proyecto.</p>
+          <div class="btns">
+            <a class="btn" href="#contacto">Agendar visita privada</a>
+            <a class="btn ghost" href="https://wa.me/584141600741?text=Hola%2C%20Estoy%20interesado%2Fa%20en%20el%20proyecto%20de%20la%20venta%20del%20Edificio%20en%20la%20Boyera!" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Ficha -->
+<section class="sheet" id="ficha" aria-labelledby="ficha-t">
+  <div class="sheet-grid">
+    <figure class="flyer"><img src="img/flyer.jpg" alt="Flyer oficial: Inversión única en La Boyera, El Hatillo. 70% de avance de obra, estructura 100% terminada, 58 apartamentos, 3 sótanos." width="720" height="1080" loading="lazy" decoding="async"></figure>
+    <div>
+      <h2 id="ficha-t">Ficha del proyecto</h2>
+      <p class="sub">Lo que recibe el nuevo propietario: un edificio con la estructura terminada y la libertad de decidir cómo cerrarlo.</p>
+      <dl class="rows">
+        <div><dt>Se ofrece</dt><dd>El edificio completo, en una sola operación</dd></div>
+        <div><dt>Ubicación</dt><dd>La Boyera, El Hatillo, Caracas, Venezuela</dd></div>
+        <div><dt>Avance de obra</dt><dd>70%</dd></div>
+        <div><dt>Estructura</dt><dd>100% terminada</dd></div>
+        <div><dt>Apartamentos</dt><dd>58</dd></div>
+        <div><dt>Estacionamiento</dt><dd>3 sótanos con maleteros</dd></div>
+        <div><dt>Entorno</dt><dd>Vistas a Caracas y El Ávila, clima de montaña</dd></div>
+      </dl>
+      <div class="audience">
+        <div><h3>Inversionistas</h3><p>Adquiere el edificio completo y define la estrategia de culminación y venta desde el primer día.</p></div>
+        <div><h3>Constructores</h3><p>Retoma la obra con la estructura 100% terminada y llévala hasta la entrega.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contact" id="contacto" aria-labelledby="contacto-t">
+  <div class="contact-grid">
+    <div>
+      <h2 id="contacto-t">Agenda una visita privada al edificio.</h2>
+      <p class="sub" style="margin-top:1rem;max-width:44ch;color:rgba(255,255,255,.82);font-size:1.05rem">Recorre la obra con la agente responsable y resuelve tus preguntas sobre la operación.</p>
+      <div class="agent">
+        <b>Neyhda Boulton</b>
+        <span style="color:var(--cement-lt)">Bienes Raíces</span><br>
+        <a href="tel:+584141600741">0414 1600741</a><a href="tel:+584241723988">0424 1723988</a>
+      </div>
+      <div class="btns">
+        <a class="btn" href="https://wa.me/584141600741?text=Hola%2C%20Estoy%20interesado%2Fa%20en%20el%20proyecto%20de%20la%20venta%20del%20Edificio%20en%20la%20Boyera!" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+    <form id="form" novalidate>
+      <label>Nombre y apellido<input name="nombre" autocomplete="name" required></label>
+      <label>Teléfono o WhatsApp<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      <label>Me interesa como
+        <select name="perfil">
+          <option>Inversionista</option>
+          <option>Constructor</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label>Mensaje (opcional)<textarea name="msg" placeholder="Día y hora que te convienen para la visita"></textarea></label>
+      <button class="btn" type="submit" style="justify-content:center">Enviar por WhatsApp</button>
+      <p class="fine" id="err" role="alert"></p>
+      <p class="fine">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Neyhda Boulton Bienes Raíces. La Boyera, El Hatillo, Caracas, Venezuela. Las imágenes de interiores terminados son recreaciones referenciales.</footer>
+
+<a class="wa" href="https://wa.me/584141600741?text=Hola%2C%20Estoy%20interesado%2Fa%20en%20el%20proyecto%20de%20la%20venta%20del%20Edificio%20en%20la%20Boyera!" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <span class="lbl">Escríbenos por WhatsApp</span>
+  <span class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.12.55 4.19 1.6 6.01L4 29l8.14-2.13a12.02 12.02 0 0 0 5.9 1.5h.01C24.68 28.37 30 22.97 30 16.34 30 9.7 24.68 3 16.04 3zm0 22.3h-.01a9.97 9.97 0 0 1-5.08-1.39l-.36-.22-4.83 1.26 1.29-4.7-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.98 9.97-9.98 5.5 0 9.97 4.48 9.97 9.98 0 5.5-4.47 9.71-9.19 9.71zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg></span>
+</a>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ================= Configuración ================= */
+  const FPS = 12, N = 344;                 // fotogramas extraídos del video a 12 fps
+  const RAMP = 0.6;                        // longitud de cada rampa de velocidad (en alturas de pantalla)
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+
+  const $ = s => document.querySelector(s);
+  const stage = $('#stage'), journey = $('#journey'), cv = $('#cv'), ctx = cv.getContext('2d', { alpha: false });
+  const amb = $('#ambient'), actx = amb.getContext('2d', { alpha: false });
+  const frameEl = $('#frame'), fx = $('#fx'), rail = $('#rail');
+  const panels = [...document.querySelectorAll('.panel')];
+  const probe = Object.assign(document.createElement('div'), {});
+  probe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100lvh;pointer-events:none;visibility:hidden';
+  document.body.appendChild(probe);
+
+  /* ================= Carga progresiva de fotogramas ================= */
+  const imgs = new Array(N).fill(null);
+  const pad = i => String(i + 1).padStart(4, '0');
+  const order = [];
+  { const seen = new Set(); const add = i => { if (i < N && !seen.has(i)) { seen.add(i); order.push(i); } };
+    add(0); add(N - 1);
+    const strides = saveData ? [16, 8, 4, 2] : [16, 8, 4, 2, 1];
+    for (const st of strides) for (let i = 0; i < N; i += st) add(i); }
+  let loaded = 0, qi = 0, active = 0;
+  const loadEl = $('#load');
+  function pump() {
+    while (active < 8 && qi < order.length) {
+      const i = order[qi++]; active++;
+      const im = new Image(); im.decoding = 'async';
+      im.onload = im.onerror = () => {
+        active--; loaded++;
+        if (im.naturalWidth) { imgs[i] = im; if (im.decode) im.decode().catch(() => {}); }
+        if (loadEl) {
+          if (loaded >= order.length) { loadEl.textContent = ''; }
+          else loadEl.textContent = 'Cargando recorrido ' + Math.round(loaded / order.length * 100) + '%';
+        }
+        dirty = true; kick(); pump();
+      };
+      im.src = 'frames/f_' + pad(i) + '.webp';
+    }
+  }
+  function nearest(i) {
+    i = Math.max(0, Math.min(N - 1, Math.round(i)));
+    if (imgs[i]) return imgs[i];
+    for (let d = 1; d < 24; d++) { if (imgs[i - d]) return imgs[i - d]; if (imgs[i + d]) return imgs[i + d]; }
+    return null;
+  }
+
+  /* ================= Línea de tiempo con speed ramp ================= */
+  // Cada capítulo tiene una "zona de lectura" (dwell) donde el video casi se detiene y una rampa
+  // entre capítulos donde acelera. Interpolación Hermite cúbica con tangentes continuas: sin saltos.
+  const CH = panels.map((el, i) => ({
+    el, inner: el.querySelector('.panel-in'),
+    t0: +el.dataset.t0, t1: +el.dataset.t1, d: +el.dataset.d, name: el.dataset.name, i
+  }));
+  let H = 800, W = 400, K = [], total = 1, mode = 'cover';
+
+  function layout() {
+    W = innerWidth;
+    H = Math.max(innerHeight, probe.offsetHeight || 0);
+    const r = W / innerHeight;
+    mode = r < 0.85 ? 'cover' : r < 1.5 ? 'contain' : 'side';
+    stage.dataset.mode = mode;
+    K = []; let pos = 0;
+    CH.forEach((c, i) => {
+      const len = c.d * H, f0 = c.t0 * FPS, f1 = c.t1 * FPS, m = (f1 - f0) / len;
+      c.s0 = pos; c.s1 = pos + len;
+      K.push({ s: pos, f: f0, m }, { s: pos + len, f: f1, m });
+      pos += len + (i < CH.length - 1 ? RAMP * H : 0);
+    });
+    total = pos;
+    journey.style.height = (total + H) + 'px';
+    dirty = true;
+  }
+  function frameAt(s) {
+    s = Math.max(0, Math.min(total, s));
+    let k = 0; while (k < K.length - 2 && s > K[k + 1].s) k++;
+    const a = K[k], b = K[k + 1], h = b.s - a.s || 1, t = (s - a.s) / h, t2 = t * t, t3 = t2 * t;
+    return (2 * t3 - 3 * t2 + 1) * a.f + (t3 - 2 * t2 + t) * h * a.m + (-2 * t3 + 3 * t2) * b.f + (t3 - t2) * h * b.m;
+  }
+
+  /* ================= Render ================= */
+  let target = 0, cur = 0, vn = 0, prevF = 0, dirty = true, running = false, last = 0;
+  let px = 0, py = 0, tx = 0, ty = 0, lastActive = -1;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  function draw(f, v, dir) {
+    const i = Math.floor(f), fr = f - i;
+    const a = nearest(i); if (!a) return;
+    ctx.globalAlpha = 1; ctx.drawImage(a, 0, 0);
+    const b = nearest(i + 1);
+    if (b && fr > 0.02 && b !== a) { ctx.globalAlpha = fr; ctx.drawImage(b, 0, 0); }
+    if (!reduce && v > 0.1) {                       // estela de movimiento durante la rampa
+      const sp = 1.5 + v * 4;
+      for (let k = 1; k <= 3; k++) {
+        const g = nearest(f - dir * k * sp);
+        if (g) { ctx.globalAlpha = 0.2 * v / k; ctx.drawImage(g, 0, 0); }
+      }
+    }
+    ctx.globalAlpha = 1;
+    if (mode !== 'cover') actx.drawImage(cv, 0, 0, amb.width, amb.height);
+  }
+
+  function render(now) {
+    const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+    const sy = clamp(-journey.getBoundingClientRect().top, 0, total);
+    target = sy;
+    cur = reduce ? target : cur + (target - cur) * (1 - Math.exp(-dt * 9));
+    if (Math.abs(target - cur) < 0.15) cur = target;
+
+    const f = frameAt(cur);
+    const vf = (f - prevF) / dt; prevF = f;
+    const dir = vf >= 0 ? 1 : -1;
+    vn += (clamp(Math.abs(vf) / 110) - vn) * (1 - Math.exp(-dt * 10));
+    if (reduce) vn = 0;
+
+    draw(f, vn, dir);
+
+    // Marco 3D: zoom con la velocidad + inclinación sutil con el puntero
+    px += (tx - px) * 0.08; py += (ty - py) * 0.08;
+    const sc = 1.02 + vn * 0.05;
+    const tilt = mode === 'cover' || reduce ? '' : `rotateY(${(px * 3.4).toFixed(2)}deg) rotateX(${(-py * 2.2).toFixed(2)}deg) `;
+    frameEl.style.transform = `${tilt}scale(${sc.toFixed(4)})`;
+    fx.style.setProperty('--v', (vn * 0.9).toFixed(3));
+
+    // Paneles
+    const fade = 0.3 * RAMP * H; let best = 0, bd = 1e9;
+    for (const c of CH) {
+      const dist = cur < c.s0 ? c.s0 - cur : cur > c.s1 ? cur - c.s1 : 0;
+      let p = clamp(1 - dist / fade); p = p * p * (3 - 2 * p);
+      c.inner.style.setProperty('--p', p.toFixed(3));
+      const on = p > 0.55; if (on !== c.on) { c.on = on; c.el.classList.toggle('on', on); }
+      const mid = (c.s0 + c.s1) / 2, dm = Math.abs(cur - mid); if (dm < bd) { bd = dm; best = c.i; }
+    }
+    if (best !== lastActive) { lastActive = best; [...rail.children].forEach((b, i) => b.classList.toggle('act', i === best)); }
+
+    const moving = Math.abs(target - cur) > 0.15 || vn > 0.002 || Math.abs(tx - px) > 0.002 || Math.abs(ty - py) > 0.002;
+    if (moving || dirty) { dirty = false; requestAnimationFrame(render); } else running = false;
+  }
+  function kick() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(render); } }
+
+  /* ================= Riel y navegación ================= */
+  CH.forEach(c => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', c.name);
+    b.innerHTML = '<span>' + c.name + '</span>';
+    b.addEventListener('click', () => goTo(c.i));
+    rail.appendChild(b);
+  });
+  function goTo(i) {
+    const c = CH[i]; if (!c) return;
+    const top = journey.getBoundingClientRect().top + scrollY + c.s0 + (c.s1 - c.s0) * 0.2;
+    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  document.querySelectorAll('[data-go]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); goTo(+a.dataset.go); }));
+
+  /* ================= Eventos ================= */
+  addEventListener('scroll', kick, { passive: true });
+  let lastW = innerWidth;
+  addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; layout(); } kick(); });
+  addEventListener('orientationchange', () => setTimeout(() => { layout(); kick(); }, 250));
+  if (matchMedia('(pointer:fine)').matches) {
+    addEventListener('pointermove', e => { tx = (e.clientX / innerWidth - 0.5) * 2; ty = (e.clientY / innerHeight - 0.5) * 2; kick(); }, { passive: true });
+  }
+
+  /* ================= Formulario → WhatsApp ================= */
+  $('#form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target, nombre = f.nombre.value.trim(), tel = f.tel.value.trim(), err = $('#err');
+    if (!nombre || !tel) { err.textContent = 'Escribe tu nombre y un teléfono para poder contactarte.'; return; }
+    err.textContent = '';
+    let msg = 'Hola, Estoy interesado/a en el proyecto de la venta del Edificio en la Boyera!\n' +
+      'Soy ' + nombre + ' (' + f.perfil.value.toLowerCase() + '). Mi contacto: ' + tel + '.';
+    if (f.msg.value.trim()) msg += '\n' + f.msg.value.trim();
+    window.open('https://wa.me/584141600741?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+
+  /* ================= Inicio ================= */
+  layout(); pump(); kick();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { dirty = true; kick(); });
+})();
+</script>
+</body>
+</html>
