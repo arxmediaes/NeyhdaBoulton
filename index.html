@@ -340,7 +340,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
 
   /* ================= Configuración ================= */
   const FPS = 12, N = 344;                 // fotogramas extraídos del video a 12 fps
-  const RAMP = 0.6;                        // longitud de cada rampa de velocidad (en alturas de pantalla)
+  const RAMP = 1.1;                        // longitud de cada rampa de velocidad (en alturas de pantalla)
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection && navigator.connection.saveData;
 
@@ -364,7 +364,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
   let loaded = 0, qi = 0, active = 0;
   const loadEl = $('#load');
   function pump() {
-    while (active < 8 && qi < order.length) {
+    while (active < 16 && qi < order.length) {
       const i = order[qi++]; active++;
       const im = new Image(); im.decoding = 'async';
       im.onload = im.onerror = () => {
@@ -429,14 +429,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
     const a = nearest(i); if (!a) return;
     ctx.globalAlpha = 1; ctx.drawImage(a, 0, 0);
     const b = nearest(i + 1);
-    if (b && fr > 0.02 && b !== a) { ctx.globalAlpha = fr; ctx.drawImage(b, 0, 0); }
-    if (!reduce && v > 0.1) {                       // estela de movimiento durante la rampa
-      const sp = 1.5 + v * 4;
-      for (let k = 1; k <= 3; k++) {
-        const g = nearest(f - dir * k * sp);
-        if (g) { ctx.globalAlpha = 0.2 * v / k; ctx.drawImage(g, 0, 0); }
-      }
-    }
+    if (b && fr > 0.02 && b !== a && v < 0.35) { ctx.globalAlpha = fr; ctx.drawImage(b, 0, 0); }
     ctx.globalAlpha = 1;
     if (mode !== 'cover') actx.drawImage(cv, 0, 0, amb.width, amb.height);
   }
@@ -458,7 +451,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
 
     // Marco 3D: zoom con la velocidad + inclinación sutil con el puntero
     px += (tx - px) * 0.08; py += (ty - py) * 0.08;
-    const sc = 1.02 + vn * 0.05;
+    const sc = 1 + vn * 0.015;
     const tilt = mode === 'cover' || reduce ? '' : `rotateY(${(px * 3.4).toFixed(2)}deg) rotateX(${(-py * 2.2).toFixed(2)}deg) `;
     frameEl.style.transform = `${tilt}scale(${sc.toFixed(4)})`;
     fx.style.setProperty('--v', (vn * 0.9).toFixed(3));
