@@ -339,7 +339,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
   'use strict';
 
   /* ================= Configuración ================= */
-  const FPS = 12, N = 344;                 // fotogramas extraídos del video a 12 fps
+  const FPS = 24, N = 688;                 // todos los fotogramas del video a 24 fps
   const RAMP = 1.1;                        // longitud de cada rampa de velocidad (en alturas de pantalla)
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection && navigator.connection.saveData;
@@ -359,7 +359,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
   const order = [];
   { const seen = new Set(); const add = i => { if (i < N && !seen.has(i)) { seen.add(i); order.push(i); } };
     add(0); add(N - 1);
-    const strides = saveData ? [16, 8, 4, 2] : [16, 8, 4, 2, 1];
+    const strides = saveData ? [16, 8, 4, 2] : [32, 16, 8, 4, 2, 1];
     for (const st of strides) for (let i = 0; i < N; i += st) add(i); }
   let loaded = 0, qi = 0, active = 0;
   const loadEl = $('#load');
@@ -382,7 +382,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
   function nearest(i) {
     i = Math.max(0, Math.min(N - 1, Math.round(i)));
     if (imgs[i]) return imgs[i];
-    for (let d = 1; d < 24; d++) { if (imgs[i - d]) return imgs[i - d]; if (imgs[i + d]) return imgs[i + d]; }
+    for (let d = 1; d < 48; d++) { if (imgs[i - d]) return imgs[i - d]; if (imgs[i + d]) return imgs[i + d]; }
     return null;
   }
 
@@ -444,7 +444,7 @@ footer{position:relative;z-index:2;background:#070b12;padding:28px clamp(20px,6v
     const f = frameAt(cur);
     const vf = (f - prevF) / dt; prevF = f;
     const dir = vf >= 0 ? 1 : -1;
-    vn += (clamp(Math.abs(vf) / 110) - vn) * (1 - Math.exp(-dt * 10));
+    vn += (clamp(Math.abs(vf) / 220) - vn) * (1 - Math.exp(-dt * 10));
     if (reduce) vn = 0;
 
     draw(f, vn, dir);
